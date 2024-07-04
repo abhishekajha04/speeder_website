@@ -12,11 +12,8 @@ class Footer extends StatefulWidget {
 class FooterState extends State<Footer> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
-          child: Column(
-        children: [Text("Footer")],
-      )),
+    return const Column(
+      children: [Text("Footer")],
     );
   }
 }
