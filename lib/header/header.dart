@@ -12,11 +12,14 @@ class Header extends StatefulWidget {
 class HeaderState extends State<Header> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
-          child: Column(
-        children: [Text("Heder")],
-      )),
+    return Column(
+      children: [
+        const Text("Heder"),
+        Image.asset(
+          "assets/images/logo.png",
+          width: 150,
+        )
+      ],
     );
   }
 }
