@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:speeder_website/footer/footer.dart';
 import 'package:speeder_website/header/header.dart';
 import 'package:speeder_website/home_page_body/home_page_body.dart';
 
@@ -18,7 +17,19 @@ class HomePageState extends State<HomePage> {
     return const Scaffold(
       body: SafeArea(
           child: Column(
-        children: [Header(), HomePageBody(), Footer()],
+        children: [
+          Header(),
+          Expanded(
+              child: SingleChildScrollView(
+            child: Column(
+              children: [
+                HomePageBody(),
+              ],
+            ),
+          ))
+
+          // Footer()
+        ],
       )),
     );
   }
