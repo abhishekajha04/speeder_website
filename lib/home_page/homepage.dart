@@ -12,25 +12,44 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
       body: SafeArea(
-          child: Column(
-        children: [
-          Header(),
-          Expanded(
-              child: SingleChildScrollView(
-            child: Column(
-              children: [
-                HomePageBody(),
-              ],
-            ),
-          ))
-
-          // Footer()
-        ],
-      )),
+        child: Column(
+          children: [
+            Header(),
+            Expanded(
+                child: SingleChildScrollView(
+              child: HomePageBody(),
+            ))
+            // Expanded(
+            //   child: WebScroll(
+            //     controller: _scrollController,
+            //     child: SingleChildScrollView(
+            //       physics: const NeverScrollableScrollPhysics(),
+            //       controller: _scrollController,
+            //       child: const HomePageBody(),
+            //     ),
+            //   ),
+            // ),
+          ],
+        ),
+      ),
     );
   }
 }

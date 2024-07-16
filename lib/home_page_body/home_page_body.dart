@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:speeder_website/home_page_body/hero_section.dart';
+import 'package:speeder_website/home_page_body/portfolio_home_page.dart';
+import 'package:speeder_website/home_page_body/whatwedoing.dart';
 
 class HomePageBody extends StatefulWidget {
   const HomePageBody({super.key});
@@ -13,8 +15,18 @@ class HomePageBody extends StatefulWidget {
 class HomePageBodyState extends State<HomePageBody> {
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [HomePageHeroSection()],
+    return Column(
+      children: [
+        HomePageHeroSection(),
+        WhatWeDoingWidget(),
+        PortfolioHomeWidget()
+      ],
+
+      // [
+      //   HomePageHeroSection(),
+      //   WhatWeDoingWidget(),
+      //   PortfolioHomeWidget()
+      // ],
     );
   }
 }

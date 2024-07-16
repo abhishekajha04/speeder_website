@@ -125,8 +125,9 @@ class HoverWidget extends StatefulWidget {
 
   const HoverWidget({super.key, required this.builder});
   @override
-  // ignore: library_private_types_in_public_api
-  _HoverWidgetState createState() => _HoverWidgetState();
+  State<StatefulWidget> createState() {
+    return _HoverWidgetState();
+  }
 }
 
 class _HoverWidgetState extends State<HoverWidget> {
