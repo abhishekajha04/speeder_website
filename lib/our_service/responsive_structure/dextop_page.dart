@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:speeder_website/our_service/responsive_structure/footer_data.dart';
@@ -61,6 +62,9 @@ class _BriefInfoState extends State<BriefInfo> {
                       color: hexToColor("#212C62"),
                       fontFamily: 'Montserrat-BlackItalic'),
                 ),
+              ),
+              SizedBox(
+                height: 25,
               ),
               Container(
                   child: Text(
@@ -185,7 +189,10 @@ class _GridboxState extends State<Gridbox> {
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3, mainAxisSpacing: 15, crossAxisSpacing: 15),
+                crossAxisCount: 3,
+                mainAxisSpacing: 15,
+                crossAxisSpacing: 15,
+                childAspectRatio: 1.3),
             itemCount: gridMap.length,
             itemBuilder: (context, index) {
               return GestureDetector(
@@ -209,10 +216,10 @@ class _GridboxState extends State<Gridbox> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(15),
                         border: _hoverIndex == index
-                            ? Border.all(color: Colors.black, width: 2)
+                            ? Border.all(color: Colors.black, width: 1)
                             : Border.all(
                                 color: Colors.black,
-                                width: 1.0,
+                                width: .5,
                               ),
                         boxShadow: _hoverIndex == index
                             ? [
@@ -240,33 +247,39 @@ class _GridboxState extends State<Gridbox> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.all(10.0),
+                              padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 child: Image.network(
                                   "${gridMap.elementAt(index)['image']}",
-                                  height: 95,
-                                  width: 95,
+                                  height: 90,
+                                  width: 90,
                                 ),
                               ),
                             ),
                             Text(
                               "${gridMap.elementAt(index)['title']}",
                               style: TextStyle(
-                                  fontSize: 16, fontFamily: "Montserrat-Bold"),
+                                  fontSize: 13,
+                                  fontFamily: "Montserrat-MediumItalic"),
                               textAlign: TextAlign.center,
                             ),
                             Padding(
                               padding: const EdgeInsets.all(3.0),
-                              child: Text(
+                              child: AutoSizeText(
                                 "${gridMap.elementAt(index)['description']}",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: 12, fontFamily: "Poppins-Black"),
+                                    fontSize: 12,
+                                    fontFamily: "Poppins-Black",
+                                    color: hexToColor("#6B6B6B")),
+                                maxLines: 3,
+                                minFontSize: 8,
                               ),
                             ),
                             Text(
                               "${gridMap.elementAt(index)['a']}",
                               textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 12),
                             )
                           ],
                         ),

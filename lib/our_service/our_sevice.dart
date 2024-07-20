@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:speeder_website/our_service/responsive_structure/dextop_page.dart';
-import 'package:speeder_website/our_service/responsive_structure/mobile.page.dart';
+import 'package:speeder_website/our_service/responsive_structure/tablet_page.dart';
 import 'package:speeder_website/our_service/responsive_structure/responsive_layout.dart';
-import 'package:speeder_website/our_service/responsive_structure/tablet_body.dart';
+import 'package:speeder_website/our_service/responsive_structure/mobile_page.dart';
 
 class OurServiceMain extends StatefulWidget {
   const OurServiceMain({super.key});

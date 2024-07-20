@@ -1,6 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:speeder_website/home_page/homepage.dart';
+import 'package:speeder_website/home_page_body/features_section.dart';
 import 'package:speeder_website/our_service/our_sevice.dart';
+import 'package:speeder_website/our_service/responsive_structure/footer_data.dart';
 import 'package:speeder_website/utills/utils.dart';
 
 void main() {

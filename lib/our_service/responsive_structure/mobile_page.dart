@@ -1,7 +1,6 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors
 
-import 'dart:ui';
-
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:speeder_website/our_service/responsive_structure/footer_data.dart';
@@ -20,16 +19,19 @@ class _OurServiceMobileViewState extends State<OurServiceMobileView> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(50.0),
-          child: Column(
-            children: [
-              //WebViewHeader(),
-              BriefInfo(),
-              Gridbox(),
-              FooterMain()
-            ],
-          ),
+        child: Column(
+          children: [
+            //WebViewHeader(),
+            Padding(
+              padding: EdgeInsets.all(50.0),
+              child: BriefInfo(),
+            ),
+            Padding(
+              padding: EdgeInsets.all(50.0),
+              child: Gridbox(),
+            ),
+            FooterMobile()
+          ],
         ),
       ),
     );
@@ -52,12 +54,20 @@ class _BriefInfoState extends State<BriefInfo> {
           padding: const EdgeInsets.all(25.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 child: Text(
                   "OUR SERVICE",
-                  style: TextStyle(fontSize: 30, color: hexToColor("#212C62")),
+                  style: TextStyle(
+                    fontSize: 30,
+                    color: Color.fromARGB(255, 8, 81, 141),
+                    fontFamily: 'Montserrat-BlackItalic',
+                  ),
                 ),
+              ),
+              SizedBox(
+                height: 25,
               ),
               Container(
                   child: Text(
@@ -178,11 +188,14 @@ class _GridboxState extends State<Gridbox> {
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, mainAxisSpacing: 15, crossAxisSpacing: 15),
+              crossAxisCount: 1,
+              mainAxisSpacing: 7,
+              crossAxisSpacing: 7,
+              childAspectRatio: 1.8,
+            ),
             itemCount: gridMap.length,
             itemBuilder: (context, index) {
               return GestureDetector(
-                onTap: () {},
                 child: MouseRegion(
                   onEnter: (_) {
                     setState(() {
@@ -195,86 +208,71 @@ class _GridboxState extends State<Gridbox> {
                     });
                   },
                   child: Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(3.0),
                     child: AnimatedContainer(
                       duration: Duration(milliseconds: 300),
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                        border: _hoverIndex == index
-                            ? Border.all(color: Colors.black, width: 1)
-                            : Border.all(
-                                color: Colors.black,
-                                width: .5,
-                              ),
-                        boxShadow: _hoverIndex == index
-                            ? [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.8),
-                                  blurRadius: 20,
-                                  offset: Offset(
-                                    20,
-                                    20,
-                                  ),
-                                ),
-                              ]
-                            : [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  blurRadius: 5,
-                                  offset: Offset(0, 3),
-                                ),
-                              ],
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
                           color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset:
-                                  Offset(0, 3), // changes position of shadow
-                            ),
-                          ],
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(15.0),
-                              child: Image.network(
-                                "${gridMap.elementAt(index)['image']}",
-                                height: 80,
-                                width: 80,
-                              ),
-                            ),
-                            Text(
-                              "${gridMap.elementAt(index)['title']}",
-                              style: TextStyle(
-                                fontSize: 18,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Text(
-                                "${gridMap.elementAt(index)['description']}",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 11,
+                          border: _hoverIndex == index
+                              ? Border.all(color: Colors.black, width: 1)
+                              : Border.all(
+                                  color: Colors.black,
+                                  width: .5,
                                 ),
-                              ),
+                          boxShadow: _hoverIndex == index
+                              ? [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(.8),
+                                    blurRadius: 20,
+                                    offset: Offset(20, 20),
+                                  ),
+                                ]
+                              : [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    blurRadius: 5,
+                                    offset: Offset(0, 3),
+                                  ),
+                                ],
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Image.network(
+                              "${gridMap.elementAt(index)['image']}",
+                              height: 50,
+                              width: 50,
                             ),
-                            Text(
-                              "${gridMap.elementAt(index)['a']}",
+                          ),
+                          Text(
+                            "${gridMap.elementAt(index)['title']}",
+                            style: TextStyle(
+                              fontSize: 13,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: (AutoSizeText(
+                              "${gridMap.elementAt(index)['description']}",
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 13),
-                            )
-                          ],
-                        ),
+                              style: TextStyle(
+                                  fontSize: 13, color: hexToColor("#6B6B6B")),
+                              minFontSize: 6,
+                              maxLines: 2,
+                            )),
+                          ),
+                          Text(
+                            "${gridMap.elementAt(index)['a']}",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),
+                          )
+                        ],
                       ),
                     ),
                   ),

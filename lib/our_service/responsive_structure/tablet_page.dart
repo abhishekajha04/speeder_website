@@ -1,7 +1,12 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:ui';
+
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:speeder_website/our_service/responsive_structure/footer_data.dart';
+import 'package:speeder_website/utills/utils.dart';
 //import 'package:speeder_website/header/header.dart';
 
 class TabletBody extends StatefulWidget {
@@ -16,15 +21,19 @@ class _TabletBodyState extends State<TabletBody> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(50.0),
-          child: Column(
-            children: [
-              //WebViewHeader(),
-              BriefInfo(),
-              Gridbox()
-            ],
-          ),
+        child: Column(
+          children: [
+            //WebViewHeader(),
+            Padding(
+              padding: EdgeInsets.all(50.0),
+              child: BriefInfo(),
+            ),
+            Padding(
+              padding: EdgeInsets.all(50.0),
+              child: Gridbox(),
+            ),
+            FooterMobile()
+          ],
         ),
       ),
     );
@@ -51,12 +60,11 @@ class _BriefInfoState extends State<BriefInfo> {
               Container(
                 child: Text(
                   "OUR SERVICE",
-                  style: TextStyle(
-                    fontSize: 30,
-                    color: Color.fromARGB(255, 8, 81, 141),
-                    fontFamily: 'Montserrat-BlackItalic',
-                  ),
+                  style: TextStyle(fontSize: 30, color: hexToColor("#212C62")),
                 ),
+              ),
+              SizedBox(
+                height: 25,
               ),
               Container(
                   child: Text(
@@ -166,76 +174,126 @@ class Gridbox extends StatefulWidget {
 }
 
 class _GridboxState extends State<Gridbox> {
+  int _hoverIndex = -1;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(3.0),
       child: SizedBox(
         width: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: GridView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1,
-                mainAxisSpacing: 7,
-                crossAxisSpacing: 7,
-                childAspectRatio: 2.0,
-              ),
-              itemCount: gridMap.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(3.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.black,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Image.network(
-                            "${gridMap.elementAt(index)['image']}",
-                            height: 100,
-                            width: 100,
-                          ),
-                        ),
-                        Text(
-                          "${gridMap.elementAt(index)['title']}",
-                          style: TextStyle(
-                            fontSize: 13,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Text(
-                            "${gridMap.elementAt(index)['description']}",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 8,
+        child: GridView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 15,
+                crossAxisSpacing: 15,
+                childAspectRatio: 1.3),
+            itemCount: gridMap.length,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {},
+                child: MouseRegion(
+                  onEnter: (_) {
+                    setState(() {
+                      _hoverIndex = index;
+                    });
+                  },
+                  onExit: (_) {
+                    setState(() {
+                      _hoverIndex = -1;
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: AnimatedContainer(
+                      duration: Duration(milliseconds: 300),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
+                        border: _hoverIndex == index
+                            ? Border.all(color: Colors.black, width: 1)
+                            : Border.all(
+                                color: Colors.black,
+                                width: .5,
+                              ),
+                        boxShadow: _hoverIndex == index
+                            ? [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.8),
+                                  blurRadius: 20,
+                                  offset: Offset(
+                                    20,
+                                    20,
+                                  ),
+                                ),
+                              ]
+                            : [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  blurRadius: 5,
+                                  offset: Offset(0, 3),
+                                ),
+                              ],
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset:
+                                  Offset(0, 3), // changes position of shadow
                             ),
-                          ),
+                          ],
+                          borderRadius: BorderRadius.circular(15),
                         ),
-                        Text(
-                          "${gridMap.elementAt(index)['a']}",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 12,
-                          ),
-                        )
-                      ],
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.network(
+                                "${gridMap.elementAt(index)['image']}",
+                                height: 50,
+                                width: 50,
+                              ),
+                            ),
+                            SizedBox(),
+                            AutoSizeText(
+                              "${gridMap.elementAt(index)['title']}",
+                              style: TextStyle(
+                                fontSize: 13,
+                              ),
+                              minFontSize: 10,
+                              textAlign: TextAlign.center,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(7.0),
+                              child: AutoSizeText(
+                                "${gridMap.elementAt(index)['description']}",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 11, color: hexToColor("#6B6B6B")),
+                                minFontSize: 5,
+                                maxLines: 3,
+                              ),
+                            ),
+                            Text(
+                              "${gridMap.elementAt(index)['a']}",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 10),
+                            )
+                          ],
+                        ),
+                      ),
                     ),
                   ),
-                );
-              }),
-        ),
+                ),
+              );
+            }),
       ),
     );
   }
