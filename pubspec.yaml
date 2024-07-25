@@ -31,8 +31,10 @@ dependencies:
 
   flutter:
     sdk: flutter
+  carousel_slider: ^4.2.1
    
   auto_size_text: ^3.0.0
+  
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -40,6 +42,8 @@ dependencies:
   cupertino_icons: ^1.0.6
   easy_debounce: ^2.0.3
   debounce_throttle: ^2.0.0
+ 
+  smooth_page_indicator: ^1.2.0+3
 
 dev_dependencies:
   flutter_test:
@@ -102,6 +106,37 @@ flutter:
     - assets/images/10.png
     - assets/images/11.png
     - assets/images/12.png
+    - assets/images/13.png
+    - assets/images/pc1.png
+    - assets/images/pc2.png
+    - assets/images/pc3.png
+    - assets/images/pc4.png
+    - assets/images/pc5.png
+    - assets/images/pc6.png
+    - assets/images/pc7.png
+    - assets/images/pc8.png
+    - assets/images/lady.png
+    - assets/images/a1.png
+    - assets/images/a2.png
+    - assets/images/a5.png
+    - assets/images/a6.png
+    - assets/images/a7.png
+    - assets/images/a9.png
+    - assets/images/a12.png
+    - assets/images/a14.png
+    - assets/images/b1.png
+    - assets/images/b2.png
+    - assets/images/b3.png
+    - assets/images/b4.png
+    - assets/images/b5.png
+    - assets/images/b6.png
+    - assets/images/b7.png
+    - assets/images/c1.png
+    - assets/images/c2.png
+    - assets/images/c3.png
+    - assets/images/c4.png
+    - assets/images/tick.png
+    - assets/images/arrow.png
 
     
   fonts:
@@ -139,6 +174,7 @@ flutter:
          - asset: assets/fonts/Montserrat-SemiBoldItalic.ttf
          - asset: assets/fonts/Montserrat-Thin.ttf
          - asset: assets/fonts/Montserrat-ThinItalic.ttf
+         
          
 
      

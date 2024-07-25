@@ -30,7 +30,7 @@ class _OurServiceMobileViewState extends State<OurServiceMobileView> {
               padding: EdgeInsets.all(50.0),
               child: Gridbox(),
             ),
-            FooterMobile()
+            FooterMobile2()
           ],
         ),
       ),
