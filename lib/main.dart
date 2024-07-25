@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:speeder_website/contactus_page/contactus_structure.dart';
 import 'package:speeder_website/home_page/homepage.dart';
+import 'package:speeder_website/home_page_body/CreativePage_structure/dextop.dart';
 import 'package:speeder_website/home_page_body/conatact_us_structure/contact_us.dart';
 import 'package:speeder_website/home_page_body/conatact_us_structure/daxtop.dart';
 import 'package:speeder_website/home_page_body/CreativePage_structure/craeative.dart';
@@ -40,9 +41,8 @@ class MyApp extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              /*
               FeaturesSectionView(),
-              //CreativePage(),
+              CreativeView(),
               SizedBox(
                 height: 40,
               ),
@@ -52,10 +52,6 @@ class MyApp extends StatelessWidget {
                 height: 40,
               ),
               FooterMobile2()
-
-              //
-              */
-              ContactUsView2()
             ],
           ),
         ),

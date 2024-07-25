@@ -540,7 +540,7 @@ class _FooterMobile2State extends State<FooterMobile2> {
   Widget build(BuildContext context) {
     return Container(
       color: Color(0xFF002366),
-      height: 1200,
+      height: 850,
       alignment: Alignment.center,
       child: Padding(
         padding: const EdgeInsets.all(25.0),
@@ -779,4 +779,3 @@ class _FooterMobile2State extends State<FooterMobile2> {
     );
   }
 }
-
