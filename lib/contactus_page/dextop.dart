@@ -45,130 +45,254 @@ class _ContactDextopState extends State<ContactDextop> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Expanded(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            filled: true, // Fill the TextField with a color
-                            fillColor: hexToColor('#FFFFFF'),
-                            hintText: 'First ',
-                            hintStyle: TextStyle(color: hexToColor('#DAD3D3')),
+                        child: Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text('Name'),
+                                  Text(
+                                    '*',
+                                    style:
+                                        TextStyle(color: hexToColor('#FF0000')),
+                                  )
+                                ],
+                              ),
+                              TextField(
+                                maxLines: 1,
+                                decoration: InputDecoration(
+                                  filled:
+                                      true, // Fill the TextField with a color
+                                  fillColor: hexToColor('#FFFFFF'),
+                                  hintText: 'First ',
+                                  hintStyle:
+                                      TextStyle(color: hexToColor('#DAD3D3')),
 
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(8)),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                    borderSide: BorderSide(),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                      SizedBox(width: 10), // Add space between text fields
+                      SizedBox(width: 30), // Add space between text fields
                       Expanded(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            filled: true, // Fill the TextField with a color
-                            fillColor: hexToColor('#FFFFFF'),
-                            hintText: 'Last ',
-                            hintStyle: TextStyle(color: hexToColor('#DAD3D3')),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                          child: Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [],
+                                ),
+                                TextField(
+                                  decoration: InputDecoration(
+                                    filled:
+                                        true, // Fill the TextField with a color
+                                    fillColor: hexToColor('#FFFFFF'),
+                                    hintText: 'Last ',
+                                    hintStyle:
+                                        TextStyle(color: hexToColor('#DAD3D3')),
 
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide.none, // Border colo
-                                borderRadius: BorderRadius.circular(8)),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 30, 20, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            filled: true, // Fill the TextField with a color
-                            fillColor: hexToColor('#FFFFFF'),
-
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(8)),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 10), // Add space between text fields
-                      Expanded(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            filled: true, // Fill the TextField with a color
-                            fillColor: hexToColor('#FFFFFF'),
-
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide.none, // Border colo
-                                borderRadius: BorderRadius.circular(8)),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 40),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            filled: true, // Fill the TextField with a color
-                            fillColor: hexToColor('#FFFFFF'),
-
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(8)),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 20), // Add space between text fields
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 40),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          maxLines: 6,
-                          decoration: InputDecoration(
-                            filled: true, // Fill the TextField with a color
-                            fillColor: hexToColor('#FFFFFF'),
-
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide.none, // Border colo
-                              borderRadius: BorderRadius.circular(8),
+                                    border: OutlineInputBorder(
+                                        borderSide: BorderSide(),
+                                        borderRadius: BorderRadius.circular(8)),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
                       ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 10, 20, 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text('Contact no'),
+                                  Text(
+                                    '*',
+                                    style:
+                                        TextStyle(color: hexToColor('#FF0000')),
+                                  )
+                                ],
+                              ),
+                              TextField(
+                                decoration: InputDecoration(
+                                  filled:
+                                      true, // Fill the TextField with a color
+                                  fillColor: hexToColor('#FFFFFF'),
+
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(),
+                                      borderRadius: BorderRadius.circular(8)),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 30), // Add space between text fields
+                      Expanded(
+                        child: Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text('Alt. Contact no. (Optional)'),
+                                  Text(
+                                    '*',
+                                    style:
+                                        TextStyle(color: hexToColor('#FF0000')),
+                                  )
+                                ],
+                              ),
+                              TextField(
+                                decoration: InputDecoration(
+                                  filled:
+                                      true, // Fill the TextField with a color
+                                  fillColor: hexToColor('#FFFFFF'),
+
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(),
+                                      borderRadius: BorderRadius.circular(8)),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text('Email'),
+                                  Text(
+                                    '*',
+                                    style:
+                                        TextStyle(color: hexToColor('#FF0000')),
+                                  )
+                                ],
+                              ),
+                              TextField(
+                                decoration: InputDecoration(
+                                  filled:
+                                      true, // Fill the TextField with a color
+                                  fillColor: hexToColor('#FFFFFF'),
+
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(),
+                                      borderRadius: BorderRadius.circular(8)),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                       SizedBox(width: 20), // Add space between text fields
                     ],
                   ),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 30),
+                  padding: const EdgeInsets.only(top: 20),
                   child: Row(
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: hexToColor('#8DC531'),
+                      Expanded(
+                        child: Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text('Message'),
+                                  Text(
+                                    '*',
+                                    style:
+                                        TextStyle(color: hexToColor('#FF0000')),
+                                  )
+                                ],
+                              ),
+                              TextField(
+                                maxLines: 6,
+                                decoration: InputDecoration(
+                                  filled:
+                                      true, // Fill the TextField with a color
+                                  fillColor: hexToColor('#FFFFFF'),
+
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(),
+                                      borderRadius: BorderRadius.circular(8)),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        height: 49,
-                        width: 1120,
-                        child: Center(
-                          child: Text(
-                            'Send',
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontFamily: 'Montserrat',
-                                color: Colors.white),
+                      ),
+                      SizedBox(width: 20), // Add space between text fields
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 30, 20, 0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: hexToColor('#8DC531'),
+                            ),
+                            height: 49,
+                            width: 1120,
+                            child: Center(
+                              child: Text(
+                                'Send',
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontFamily: 'Montserrat',
+                                    color: Colors.white),
+                              ),
+                            ),
                           ),
                         ),
                       ),

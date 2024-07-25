@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:speeder_website/contactus_page/dextop.dart';
+import 'package:speeder_website/contactus_page/mobile.dart';
 import 'package:speeder_website/contactus_page/tablet.dart';
 import 'package:speeder_website/home_page_body/conatact_us_structure/mobile.dart';
 import 'package:speeder_website/our_service/responsive_structure/responsive_layout.dart';
@@ -15,7 +16,7 @@ class _ContactUsView2State extends State<ContactUsView2> {
   @override
   Widget build(BuildContext context) {
     return ResponsiveLayout(
-        mobileBody: ContactMobile(),
+        mobileBody: ContactMobile2(),
         desktopBody: ContactDextop(),
         tabletBody: ContactTablet());
   }
