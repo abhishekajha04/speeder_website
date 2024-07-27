@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:speeder_website/about_us_page/about_us_page.dart';
 import 'package:speeder_website/home_page/homepage.dart';
 import 'package:speeder_website/utills/utils.dart';
 
@@ -18,6 +19,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: hexToColor("#002366")),
           useMaterial3: true,
         ),
-        home: const HomePage());
+        home: const AboutUs());
   }
 }

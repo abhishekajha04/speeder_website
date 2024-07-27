@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:speeder_website/about_us_page/about_us_page.dart';
+import 'package:speeder_website/home_page/homepage.dart';
 import 'package:speeder_website/responsive/responsive.dart';
 import 'package:speeder_website/utills/consts.dart';
 import 'package:speeder_website/utills/utils.dart';
@@ -52,8 +53,10 @@ class ContactSection extends StatefulWidget {
 class ContactSectionState extends State<ContactSection> {
   @override
   Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.only(right: 30, top: 5),
+      padding: EdgeInsets.only(
+          right: width > SCREEN_SIZE ? RIGHT_PADDING : 20, top: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -61,19 +64,20 @@ class ContactSectionState extends State<ContactSection> {
           imageButton("assets/images/phone.png"),
           const SizedBox(width: 5),
           const Text(
+            "Get a Proposal:",
+            style: TextStyle(
+                fontSize: 14,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.w600),
+          ),
+          const SizedBox(width: 5),
+          const Text(
             "+91 96379 03345",
             style: TextStyle(
-                fontSize: 18,
-                fontFamily: 'BebasNeue',
+                fontSize: 14,
+                fontFamily: 'Montserrat',
                 fontWeight: FontWeight.w500),
           ),
-          const SizedBox(width: 25),
-          imageButton("assets/images/social_media.png"),
-          const SizedBox(width: 5),
-          imageButton("assets/images/instagram.png"),
-          imageButton("assets/images/facebook.png"),
-          imageButton("assets/images/youtube.png"),
-          imageButton("assets/images/linkedIn.png"),
         ],
       ),
     );
@@ -114,7 +118,8 @@ class HeaderContentSectionState extends State<HeaderContentSection> {
           Align(
             alignment: Alignment.centerLeft,
             child: Padding(
-              padding: EdgeInsets.fromLTRB(50 / mockupWidth * width, 0, 10, 0),
+              padding:
+                  EdgeInsets.fromLTRB(width > SCREEN_SIZE ? 100 : 15, 0, 10, 0),
               child: Image.asset(
                 "assets/images/logo.png",
                 width: 100,
@@ -122,26 +127,25 @@ class HeaderContentSectionState extends State<HeaderContentSection> {
             ),
           ),
           if (Responsive.isDesktop(context))
-            const Center(
+            Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   MenuText(
-                    text: "HOME",
+                    text: "Home",
+                    onClick: () {
+                      navigateToHomePage(context);
+                    },
                   ),
                   MenuText(
-                    text: "ABOUT US",
-                  ),
-                  MenuText(
-                    text: "OUR SERVICES",
-                  ),
-                  MenuText(
-                    text: "PROJECTS",
-                  ),
-                  MenuText(
-                    text: "CONTACT US",
-                  ),
+                      text: "About Us",
+                      onClick: () {
+                        navigateToAboutUsPage(context);
+                      }),
+                  MenuText(text: "Our Services", onClick: () {}),
+                  MenuText(text: "Pricing", onClick: () {}),
+                  MenuText(text: "CONTACT US", onClick: () {}),
                 ],
               ),
             )
@@ -153,7 +157,9 @@ class HeaderContentSectionState extends State<HeaderContentSection> {
 
 class MenuText extends StatefulWidget {
   final String text;
-  const MenuText({super.key, required this.text});
+
+  final Function onClick;
+  const MenuText({super.key, required this.text, required this.onClick});
 
   @override
   State<StatefulWidget> createState() {
@@ -163,56 +169,51 @@ class MenuText extends StatefulWidget {
 
 class _MenuTextState extends State<MenuText> {
   bool _isHovered = false;
-  double _textWidth = 0;
   final GlobalKey _textKey = GlobalKey();
 
   @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _calculateTextWidth());
-  }
-
-  void _calculateTextWidth() {
-    final RenderBox renderBox =
-        _textKey.currentContext!.findRenderObject() as RenderBox;
-    setState(() {
-      _textWidth = renderBox.size.width;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (event) => _onHover(true),
-      onExit: (event) => _onHover(false),
-      child: Padding(
-        padding: const EdgeInsets.only(right: 25, left: 25),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            AnimatedContainer(
+    return Padding(
+      padding: const EdgeInsets.only(right: 25, left: 25),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          MouseRegion(
+            onEnter: (event) => _onHover(true),
+            onExit: (event) => _onHover(false),
+            cursor: SystemMouseCursors.click,
+            child: AnimatedContainer(
               duration: const Duration(milliseconds: 300),
-              child: Text(
-                widget.text,
-                key: _textKey,
-                style: TextStyle(
-                  fontFamily: 'BebasNeue',
-                  color: _isHovered
-                      ? hexToColor("#002366")
-                      : hexToColor("#7A8AA8"),
-                  fontWeight: FontWeight.w500,
-                  fontSize: 22,
+              child: GestureDetector(
+                onTap: () {
+                  widget.onClick();
+                },
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                  decoration: BoxDecoration(
+                      borderRadius: _isHovered
+                          ? const BorderRadius.all(Radius.circular(15))
+                          : null,
+                      border: _isHovered
+                          ? Border.all(color: hexToColor("#212C62"))
+                          : null),
+                  child: Text(
+                    widget.text,
+                    key: _textKey,
+                    style: TextStyle(
+                      fontFamily: 'Montserrat',
+                      color: _isHovered
+                          ? hexToColor("#002366")
+                          : hexToColor("#2D2D2D"),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
               ),
             ),
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
-              height: 2,
-              width: _isHovered ? _textWidth : 0,
-              color: hexToColor("#002366"),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -222,4 +223,18 @@ class _MenuTextState extends State<MenuText> {
       _isHovered = isHovered;
     });
   }
+}
+
+void navigateToHomePage(BuildContext context) {
+  Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: ((BuildContext context) {
+    return const HomePage();
+  })), (route) => false);
+}
+
+void navigateToAboutUsPage(BuildContext context) {
+  Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: ((BuildContext context) {
+    return const AboutUs();
+  })), (route) => false);
 }
